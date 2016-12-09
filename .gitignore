@@ -1,0 +1,11 @@
+# Eclipse Core
+.project
+
+# sbteclipse plugin
+.target
+
+# JDT-specific (Eclipse Java Development Tools)
+.classpath
+
+#local.properties
+.settings/t .settings
