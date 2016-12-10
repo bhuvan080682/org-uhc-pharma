@@ -9,3 +9,4 @@
 
 #local.properties
 .settings/t .settings
+/target/
