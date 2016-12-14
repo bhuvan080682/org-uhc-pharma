@@ -21,9 +21,9 @@ import org.uhc.ws.service.DrugsServiceImpl;
 import org.springframework.http.MediaType;
 
 @RestController
-public class DrugsController {
+public class DrugsController extends BaseController{
 	
-	Logger logger = LoggerFactory.getLogger(this.getClass());
+	
 	@Autowired
 	private DrugsService drugsService;
 	
@@ -67,6 +67,10 @@ public class DrugsController {
 		Long start = System.currentTimeMillis();
 		logger.info(start.toString() + ">Greeting Service");
 		Drug drug = drugsService.findDrugById(id);
+		if (drug == null) {
+	            return new ResponseEntity<Drug>(HttpStatus.NOT_FOUND);
+	        }
+
 		Long end = System.currentTimeMillis();
 		logger.info(end.toString() + "<Greeting Service");
 		return new ResponseEntity<Drug>(drug,HttpStatus.OK);

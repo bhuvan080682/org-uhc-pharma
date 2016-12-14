@@ -5,6 +5,7 @@ import java.util.Collection;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -44,6 +45,7 @@ public class DrugsServiceTest extends AbstractTest{
 	}
 	
 	//negative scenario
+	@Ignore
 	@Test
 	public void testGetDrugByIdFailure(){
 		Drug entity = service.findDrugById(45L);
