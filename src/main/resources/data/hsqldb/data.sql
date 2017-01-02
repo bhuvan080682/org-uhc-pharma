@@ -51,6 +51,11 @@ INSERT INTO Role (id, code, label, ordinal, effectiveAt, expiresAt, createdAt) V
 INSERT INTO AccountRole (accountId, roleId) SELECT a.id, r.id FROM Account a, Role r WHERE a.username = 'user' and r.id = 1;
 INSERT INTO AccountRole (accountId, roleId) SELECT a.id, r.id FROM Account a, Role r WHERE a.username = 'operations' and r.id = 3;
 
+
+INSERT INTO CUSTOMER(name,phone,sex) values ('Bhuvanesh','9535331523','M');
+INSERT INTO CUSTOMER(name,phone,sex) values ('Parvathamma','9900502098','F');
+INSERT INTO CUSTOMER(name,phone,sex) values ('Nari','9845870007','M');
+
 -- password is 'password'
 --INSERT INTO Account (referenceId, username, password, enabled, credentialsexpired, expired, locked, version, createdBy, createdAt, updatedBy, updatedAt) VALUES ('a07bd221-3ecd-4893-a0f0-78d7c0fbf94e', 'user', '$2a$10$9/44Rne7kQqPXa0cY6NfG.3XzScMrCxFYjapoLq/wFmHz7EC9praK', true, false, false, false, 0, 'user', NOW(), NULL, NULL);
 -- password is 'password'
