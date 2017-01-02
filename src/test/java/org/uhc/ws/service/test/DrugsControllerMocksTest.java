@@ -54,7 +54,7 @@ public class DrugsControllerMocksTest extends AbstractControllerTest {
 	@Test
 	public void testGetAllDrugSuccess() throws Exception{
 		Collection<Drug> entityList = getDrugListStubData();
-		when(service.findAllDrugs()).thenReturn(entityList);
+		when(service.getAllDrugs()).thenReturn(entityList);
 		
 		String uri = "/api/pharma/drugs";
 		MvcResult result = mvc.perform(
@@ -65,7 +65,7 @@ public class DrugsControllerMocksTest extends AbstractControllerTest {
 		int status = result.getResponse().getStatus();
 		String content = result.getResponse().getContentAsString();
 		
-		verify(service,times(1)).findAllDrugs();
+		verify(service,times(1)).getAllDrugs();
 		
 		Assert.assertNotNull("failure - expected http response should not be null" , content);
 		Assert.assertEquals("failure -  expected http response state 200",200,status);
@@ -75,13 +75,13 @@ public class DrugsControllerMocksTest extends AbstractControllerTest {
 	@Test
 	public void testGetDrugByIdSuccess() throws Exception{
 		Drug entity = getDrugStuData();
-		when(service.findDrugById(1L)).thenReturn(entity);
+		when(service.getDrugById(1L)).thenReturn(entity);
 		String uri = "/api/pharma/drug/{id}";
 		Long id = new Long(1);
 		MvcResult result = mvc.perform(MockMvcRequestBuilders.get(uri,id).accept(MediaType.APPLICATION_JSON)).andReturn();
 		int status = result.getResponse().getStatus();
 		String content = result.getResponse().getContentAsString();
-		verify(service,times(1)).findDrugById(id);
+		verify(service,times(1)).getDrugById(id);
 		Assert.assertNotNull("failure -  expected http response not null",content);
 		Assert.assertEquals("failure - expected http status code 200",200,status);
 	}
@@ -89,7 +89,7 @@ public class DrugsControllerMocksTest extends AbstractControllerTest {
 	@Test
 	public void testGetDrugByIdFailure() throws Exception{
 		Long id = Long.MAX_VALUE;
-		when(service.findDrugById(id)).thenReturn(null);
+		when(service.getDrugById(id)).thenReturn(null);
 		String uri = "/api/pharma/drugs/{id}";
 		
 		MvcResult result = mvc.perform(MockMvcRequestBuilders.get(uri,id).accept(MediaType.APPLICATION_JSON)).andReturn();
@@ -103,7 +103,7 @@ public class DrugsControllerMocksTest extends AbstractControllerTest {
 	@Test
 	public void testGetDrugNotFound() throws Exception{
 		Long id = Long.MAX_VALUE;
-		when(service.findDrugById(id)).thenReturn(null);
+		when(service.getDrugById(id)).thenReturn(null);
 		
 		String uri = "/pharma/api/drug/{id}";
 		

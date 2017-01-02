@@ -31,7 +31,7 @@ public class DrugsServiceTest extends AbstractTest{
 	
 	@Test
 	public void testGetDrugsSuccess(){
-		Collection<Drug> entityList = service.findAllDrugs();
+		Collection<Drug> entityList = service.getAllDrugs();
 		Assert.assertNotNull("failure - expected drug list not null",entityList);
 		Assert.assertEquals("failure - expected drug size is 40", 40,entityList.size());
 	}
@@ -39,7 +39,7 @@ public class DrugsServiceTest extends AbstractTest{
 	@Test
 	public void testGetDrugByIdSuccess(){
 		Long id = new Long(1);
-		Drug entity = service.findDrugById(id);
+		Drug entity = service.getDrugById(id);
 		Assert.assertNotNull("failure - expected drug list not null" , entity);
 		Assert.assertEquals("failure - expected drug name is DOLO 650", "DOLO 650" , entity.getDrugName());
 	}
@@ -48,7 +48,7 @@ public class DrugsServiceTest extends AbstractTest{
 	@Ignore
 	@Test
 	public void testGetDrugByIdFailure(){
-		Drug entity = service.findDrugById(45L);
+		Drug entity = service.getDrugById(45L);
 		Assert.assertNull("failure : expected drug is null", entity);
 		Assert.assertEquals("failure - expected id null", null,entity.getId());
 		
@@ -56,11 +56,11 @@ public class DrugsServiceTest extends AbstractTest{
 	
 	@Test
 	public void testCreateDrugSuccess(){
-		Collection<Drug> entityListBefore = service.findAllDrugs();
+		Collection<Drug> entityListBefore = service.getAllDrugs();
 		int sizeBefore = entityListBefore.size();
 		Drug entityToCreate = new Drug(null, "Manforce", "MakKind");
 		Drug createdentity = service.saveDrug(entityToCreate);
-		Collection<Drug> entityListAfter = service.findAllDrugs();
+		Collection<Drug> entityListAfter = service.getAllDrugs();
 		Assert.assertNotNull("failed - expected adding one more drug " ,createdentity);
 		Assert.assertEquals("failed - max id found in drug list is 40", 40 , sizeBefore);
 		Assert.assertTrue("failed - expected is value 41 ", createdentity.getId() > 40);
@@ -69,10 +69,10 @@ public class DrugsServiceTest extends AbstractTest{
 	
 	@Test
 	public void testRemoveDrug(){
-		Collection<Drug> entityListBefore = service.findAllDrugs();
+		Collection<Drug> entityListBefore = service.getAllDrugs();
 		Assert.assertEquals("failure - expected entity list size 40", 40 , entityListBefore.size());
 		service.removeDrug(1L);
-		Collection<Drug> entityListAfter = service.findAllDrugs();
+		Collection<Drug> entityListAfter = service.getAllDrugs();
 		//Assert.assertEquals("failure - expected entity list size 39", 39 , entityListAfter.size());
 		
 	}

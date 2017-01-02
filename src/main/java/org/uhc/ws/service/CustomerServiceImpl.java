@@ -15,13 +15,13 @@ public class CustomerServiceImpl implements CustomerService {
 	
 	
 	@Override
-	public Collection<Customer> findAllCustomer() {
+	public Collection<Customer> getAllCustomer() {
 		Collection<Customer> customers = repository.findAll();
 		return customers;
 	}
 
 	@Override
-	public Customer findCustomerById(Long id) {
+	public Customer getCustomerById(Long id) {
 		Customer customer = repository.findOne(id);
 		return customer;
 	}

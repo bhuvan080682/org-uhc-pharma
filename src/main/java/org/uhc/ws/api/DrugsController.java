@@ -41,7 +41,7 @@ public class DrugsController extends BaseController{
 	}*/
 	@RequestMapping(value="/welcome",method=RequestMethod.GET,produces={MediaType.APPLICATION_JSON_VALUE})
 	public ResponseEntity<String> getWelcomeMessage(){
-		String welcomeMsg = "Welcome to UHC Pharma";
+		String welcomeMsg = drugsService.welcomeMessage("Bhuvanesh");
 		return new ResponseEntity<String>(welcomeMsg,HttpStatus.OK);
 	}
 	
@@ -53,7 +53,7 @@ public class DrugsController extends BaseController{
 	public ResponseEntity<Collection<Drug>> getAllDrugs(){
 		Long start = System.currentTimeMillis();
 		logger.info(start.toString() + ">Greeting Service");
-		Collection<Drug> drugs = drugsService.findAllDrugs();
+		Collection<Drug> drugs = drugsService.getAllDrugs();
 		Long end = System.currentTimeMillis();
 		logger.info(end.toString() + "<Greeting Service");
 		return new ResponseEntity<Collection<Drug>>(drugs,HttpStatus.OK);
@@ -66,7 +66,7 @@ public class DrugsController extends BaseController{
 	public ResponseEntity<Drug> getDrugById(@PathVariable("id") Long id){
 		Long start = System.currentTimeMillis();
 		logger.info(start.toString() + ">Greeting Service");
-		Drug drug = drugsService.findDrugById(id);
+		Drug drug = drugsService.getDrugById(id);
 		if (drug == null) {
 	            return new ResponseEntity<Drug>(HttpStatus.NOT_FOUND);
 	        }

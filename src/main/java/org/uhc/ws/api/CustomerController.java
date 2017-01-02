@@ -25,7 +25,7 @@ public class CustomerController {
 					produces=MediaType.APPLICATION_JSON_VALUE,
 					method=RequestMethod.GET)
 	public ResponseEntity<Collection<Customer>> getAllCustomers(){
-		Collection<Customer> customers = service.findAllCustomer();
+		Collection<Customer> customers = service.getAllCustomer();
 		return new ResponseEntity<Collection<Customer>>(customers,HttpStatus.OK);
 	}
 
@@ -33,7 +33,7 @@ public class CustomerController {
 			produces=MediaType.APPLICATION_JSON_VALUE,
 			method=RequestMethod.GET)
 	public ResponseEntity<Customer> getCustomerById(@PathVariable("id")Long id){
-		Customer customer = service.findCustomerById(id);
+		Customer customer = service.getCustomerById(id);
 		return new ResponseEntity<Customer>(customer,HttpStatus.OK);
 	}
 	

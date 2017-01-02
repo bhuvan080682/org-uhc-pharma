@@ -12,7 +12,7 @@ public class DrugHealthIndicator implements HealthIndicator {
 	private DrugsService service;
 	@Override
 	public Health health() {
-		int size = service.findAllDrugs().size();
+		int size = service.getAllDrugs().size();
 		if(size == 0)
 			return Health.down().withDetail("count", 0).build();
 		return Health.up().withDetail("count", size).build();

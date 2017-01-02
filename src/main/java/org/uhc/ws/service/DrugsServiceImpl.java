@@ -28,14 +28,16 @@ public class DrugsServiceImpl implements DrugsService{
 	
 	@Override
 	@Cacheable("drugs")
-	public Collection<Drug> findAllDrugs() {
+	public Collection<Drug> getAllDrugs() {
 		Collection<Drug> drugs = drugRepository.findAll();
 		return drugs;
 	}
+	
+	
 
 	@Override
 	@Cacheable(value="drugs",key="#id")
-	public Drug findDrugById(Long id) {
+	public Drug getDrugById(Long id) {
 		Drug drug =drugRepository.findOne(id);
 		return drug;
 	}
@@ -92,5 +94,12 @@ public class DrugsServiceImpl implements DrugsService{
 	@CacheEvict(value="drugs",allEntries=true)
 	public void evictCache(){
 		
+	}
+
+
+
+	@Override
+	public String welcomeMessage(String user) {
+		return "Welcome dear user : " + user;
 	}
 }

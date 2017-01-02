@@ -22,7 +22,7 @@ public class DrugsBatchBean {
 	@Scheduled(cron="0,15 * * * * * ")
 	public void cronBatch(){
 		logger.info(">executing cronJob");
-		Collection<Drug> drugs = drugsService.findAllDrugs();
+		Collection<Drug> drugs = drugsService.getAllDrugs();
 		logger.info("there are {} drug at the moment" , drugs.size());
 		logger.info(">end of cronJob");
 	}
