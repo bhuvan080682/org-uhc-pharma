@@ -12,6 +12,8 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.uhc.ws.service.DrugsService;
+import org.uhc.ws.service.DrugsServiceImpl;
 
 @SpringBootApplication
 @ComponentScan(basePackages="org.uhc")
@@ -42,5 +44,15 @@ public class Application {
 	public PasswordEncoder passwordEncoder(){
 		return new BCryptPasswordEncoder();
 	}
+	
+//	@Bean(name="drugsService")
+//	public DrugsService drugService(){
+//		return new DrugsServiceImpl();
+//	}
+//	
+//	@Bean(name="pharmaService")
+//	public DrugsService pharmaService(){
+//		return new DrugsServiceImpl();
+//	}
 
 }
